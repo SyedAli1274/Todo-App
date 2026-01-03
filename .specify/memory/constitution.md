@@ -1,55 +1,94 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- SYNC IMPACT REPORT
+Version change: 1.0.0 → 1.1.0
+Modified principles: [PRINCIPLE_1_NAME] → Simplicity, [PRINCIPLE_2_NAME] → Correctness, [PRINCIPLE_3_NAME] → Consistency, [PRINCIPLE_4_NAME] → Separation of Concerns, [PRINCIPLE_5_NAME] → Learning-Oriented Design
+Added sections: Python Standards, Functional Requirements, Non-functional Requirements, Constraints, Quality Requirements, Testing & Validation
+Removed sections: Template placeholders
+Templates requiring updates:
+- .specify/templates/plan-template.md ✅ updated
+- .specify/templates/spec-template.md ✅ updated
+- .specify/templates/tasks-template.md ✅ updated
+- .specify/templates/commands/*.md ⚠ pending
+Follow-up TODOs: None
+-->
+
+# In-Memory Todo List Python Console Application Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Simplicity
+Code must be easy to read, understand, and modify. All features and implementations should follow the KISS (Keep It Simple, Stupid) principle. Complexity must be justified and minimized. Focus on clear, straightforward solutions that prioritize readability and maintainability.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Correctness
+All features must behave exactly as specified in the functional requirements. Implementation must match specifications precisely with no deviations. All functions must handle their intended inputs correctly and produce expected outputs. Error handling must be comprehensive and predictable.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Consistency
+Uniform command structure and predictable outputs are mandatory. All user interfaces, error messages, and behaviors must follow consistent patterns. Code style must adhere to PEP 8 standards. Naming conventions must be uniform across the codebase.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Separation of Concerns
+Clear distinction between data, logic, and I/O is required. Data models, business logic, and input/output operations must be implemented in separate modules or classes. This ensures maintainability, testability, and modularity of the application.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Learning-Oriented Design
+All code must be optimized for educational clarity. Implementation should serve as a teaching example for Python best practices. Comments and documentation should explain not just what the code does but why it does it. Code structure should follow pedagogical best practices.
 
-### [PRINCIPLE_6_NAME]
+### Python Standards
+Implementation must use Python 3.x only with no external libraries (standard library only). Storage must be in-memory data structures with no files or databases. Interface must be console-based using stdin/stdout. Data model requires each todo item to have a unique ID, title, optional description, and completion status.
 
+## Python Standards
 
-[PRINCIPLE__DESCRIPTION]
+Language: Python 3.x only with no external libraries (standard library only)
+Storage: In-memory data structures (no files, no databases)
+Interface: Console-based (stdin/stdout)
+Data Model: Todo items must have at minimum:
+- unique ID
+- title
+- optional description
+- completion status
+Commands must be explicit, deterministic, and documented
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Functional Requirements
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+The application must support these core functions:
+- Create a new todo
+- List all todos
+- Mark a todo as completed
+- Update a todo
+- Delete a todo
+- Exit the application safely
+- Graceful handling of invalid input (no crashes)
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Non-functional Requirements
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- No external libraries (standard library only)
+- Deterministic behavior (same input → same output)
+- Clear user prompts and readable console output
+- Modular code structure (functions or classes)
+
+## Constraints
+
+- No file system usage
+- No network calls
+- No persistent storage
+- Single-process execution
+- Runs entirely in memory until program exit
+
+## Quality Requirements
+
+- Code must follow PEP 8 style guidelines
+- Meaningful variable and function names
+- Inline comments only where clarity is needed
+- No unused code or dead logic
+
+## Testing & Validation
+
+- Manual testability via console input
+- Edge cases handled:
+  - Empty todo list
+  - Invalid IDs
+  - Duplicate operations
+- Application must never terminate unexpectedly
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution governs all development decisions for the In-Memory Todo List Python Console Application. All code contributions must comply with these principles. Any deviation from these principles requires explicit amendment to this constitution with proper justification. Code reviews must verify compliance with all principles and requirements. All developers must understand and adhere to these standards before contributing to the project.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.1.0 | **Ratified**: 2026-01-03 | **Last Amended**: 2026-01-03
